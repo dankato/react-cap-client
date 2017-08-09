@@ -1,5 +1,5 @@
 
-import {API_BASE_URL} from './config';
+import {REACT_APP_API_BASE_URL} from './config';
 // | GET_POSTS   | Retrieves all entries in the databases             |
 // | SELECT_POST | Selects a single POST by its id from the database  |
 // | ADD_POST    | Adds an POST to the database                       |
