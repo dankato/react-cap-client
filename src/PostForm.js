@@ -7,9 +7,9 @@ export class PostForm extends React.Component{
 
     onSubmit(event){
         event.preventDefault();
-        const value = this.input.value;
+        let value = this.input.value;
         console.log('-----> ', value);
-        this.props.dispatch(actions.addPost({value}));
+        this.props.dispatch(actions.addPost({text: value}));
     }
 
     render(){

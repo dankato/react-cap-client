@@ -25,7 +25,7 @@ export const reducer = (state=initialState, action) => {
            loading: false,
            error: action.err
         })
-    } else if (action.type === actions.ADD_POST) {
+    } else if (action.type === actions.ADD_POST_SUCCESS) {
         return Object.assign({}, state, {
             text: [...state.text, action.text]
         }) 

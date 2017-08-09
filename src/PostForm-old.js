@@ -4,7 +4,7 @@ import style from './style';
 export default function PostForm(props) {
 
 function onSubmit() {
-    console.log(props);
+   // console.log(props);
 }
 
 // function addPost() {
