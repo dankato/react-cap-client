@@ -1,6 +1,5 @@
 import React from 'react';
 import PostReply from './PostReply';
-import style from './style';
 
 export default function ReplyBox() {
 

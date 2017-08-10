@@ -17,21 +17,17 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
            loading: false,
            error: null,
-            text: [...state.text,
-                    ...action.text]
+            text: action.posts
         })
     } else if (action.type === actions.GET_POSTS_ERROR) {
         return Object.assign({}, state, {
            loading: false,
            error: action.err
         })
-    } else if (action.type === actions.ADD_POST) {
-        return Object.assign({}, state, {
-            text: [...state.text, action.text]
-        }) 
     }
     return state;
 }
+
 
 // class Comment extends Component {
 //   constructor(props) {
