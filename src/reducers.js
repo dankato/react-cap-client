@@ -24,6 +24,11 @@ export const reducer = (state=initialState, action) => {
            loading: false,
            error: action.err
         })
+    } else if (action.type === action.DELETE_POST_ERROR) {
+        return Object.assign({}, state, {
+           loading: false,
+           error: action.err
+        })
     }
     return state;
 }

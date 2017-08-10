@@ -38,6 +38,28 @@ export const addPostError = text => ({
     text
 })
 
+// Delete
+export const DELETE_POSTS_REQUEST = 'DELETE_POSTS_REQUEST';
+export const deletePostRequest = text => ({
+    type: DELETE_POSTS_REQUEST,
+    text
+})
+
+export const DELETE_POSTS_SUCCESS = 'DELETE_POSTS_SUCCESS';
+export const deletePostSuccess = posts => ({
+    type: DELETE_POSTS_SUCCESS,
+    posts
+})
+
+export const DELETE_POSTS_ERROR = 'DELETE_POSTS_ERROR';
+export const deletePostError = text => ({
+    type: DELETE_POSTS_ERROR,
+    text
+})
+
+
+
+
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
     fetch(`${REACT_APP_API_BASE_URL}`)
@@ -87,3 +109,25 @@ export const addPost = (data) => dispatch => {
         })
 }
 
+
+export const deletePost = (id) => dispatch => {
+    console.log('what is my id? --->', id);    
+    const opts = {
+        method: 'DELETE',
+        headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+    },    
+    }
+    dispatch(deletePostRequest());
+    fetch(`${REACT_APP_API_BASE_URL}/post/${id}`, opts)
+        .then((posts) => {
+            console.log('posts', posts);
+
+            dispatch(deletePostSuccess(posts))
+        })
+        .catch((err) => {
+            console.log(err)
+            dispatch(deletePostError(err))
+        })
+}
