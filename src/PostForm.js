@@ -1,24 +1,28 @@
 import React from 'react';
-import style from './style';
 import * as actions from './actions';
 import {connect} from 'react-redux';
 
-export class PostForm extends React.Component{
 
-    onSubmit(event){
+export class PostForm extends React.Component{
+    onSubmit(event, state){
         event.preventDefault();
-        let value = this.input.value;
-        console.log('-----> ', value);
+        let value = this.x.value;
         this.props.dispatch(actions.addPost({text: value}));
+        this.x.value = '';
     }
 
+    // onClick(event) {
+    //     this.props.dispatch(actions.getPosts());
+    // }
+
     render(){
+
         return(
             <div className='addOption'>
                 Have anonymous feedback to share?
-                <form onSubmit={e => this.onSubmit(e)}>
+                <form onSubmit={e => this.onSubmit(e)} >
                     <input type="text" placeholder="enter text here" 
-                        ref={input => this.input = input} required/>
+                        ref={input => this.x = input} required/>
                     <button type="submit">Tell us!</button>
                 </form>
             </div>
@@ -26,7 +30,7 @@ export class PostForm extends React.Component{
     }
 }
 const mapStateToProps = (state, props) => ({
-    text: state.addPost
+    text: state.text
 });
 
 export default connect(mapStateToProps)(PostForm);

@@ -1,22 +1,20 @@
 import React from 'react';
 import style from './style';
 import ReplyBox from './ReplyBox';
-import reducer from './reducers';
 import {connect} from 'react-redux';
-import PostForm from './PostForm';
 import * as actions from './actions';
 const emoji = require('node-emoji');
 
 export class PostList extends React.Component {
-  // componentDidMount() {
-  //   this.props.dispatch(actions.getPosts());
-  // }
+  componentDidMount() {
+    this.props.dispatch(actions.getPosts());
+  }
 
  render() {
-   console.log('loaded');
   // if (this.props.text[0]) {
   this.props.text[0] && console.log('text console>>>>>>>', this.props.text[0]);
-   let post = this.props.text.map((t, index) => {
+   
+    let post = this.props.text.map((t, index) => {
     return (
       <div key={index}>
         <p>{t.text}</p>
@@ -34,7 +32,8 @@ export class PostList extends React.Component {
        {post} 
     </div>
   );
- }
+
+}
 }
 
 const mapStateToProps = state => ({
